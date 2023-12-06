@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+<head>
+    <title th:text="${title}">Beautiful Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 60px; /* Adjust the top padding according to your header's height */
+        }
+
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        h4 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<header th:insert="header.html"></header>
+<div class="container mt-4">
+    <h4>Информация об абитуриенте</h4>
+    <p th:text="'ID: ' + ${enrollee.getId()}"/>
+    <p th:text="'Абитуриент: ' + ${enrollee.getFullName()}"/>
+    <p th:text="'Дата рождения: ' + ${enrollee.getDrString()}"/>
+    <table th:if="${exams}!= null" class="table mt-4">
+        <thead>
+        <tr>
+            <th>Экзамен</th>
+            <th>Балл</th>
+            <th>Проход</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exam : ${exams}">
+            <td th:text="${exam.subject}"></td>
+            <td th:text="${exam.score}"></td>
+            <td th:text="${exam.score > 80 ? 'Да' : 'Нет'}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:insert="footer.html"></footer>
+</body>
+
+</html>

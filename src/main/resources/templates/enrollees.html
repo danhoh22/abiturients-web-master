@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+<head>
+    <title th:text="${title}">Beautiful Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 60px; /* Adjust the top padding according to your header's height */
+        }
+
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<header th:insert="header.html"></header>
+<div class="container mt-4">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="enrollee : ${enrollees}">
+            <td th:text="${enrollee.id}"></td>
+            <td th:text="${enrollee.fullName}"></td>
+            <td>
+                <a th:href="@{/enrollee/{id}(id=${enrollee.getId()})}">Подробнее</a>
+                <a th:href="@{/exam/{id}(id=${enrollee.getId()})}">Добавить экзамен</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{/add}">Добавить абитуриента</a>
+</div>
+<footer th:insert="footer.html"></footer>
+</body>
+
+</html>

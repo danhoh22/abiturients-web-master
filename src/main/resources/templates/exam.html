@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+
+<head>
+    <title th:text="${title}">Beautiful Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 60px; /* Adjust the top padding according to your header's height */
+        }
+
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select,
+        input[type="number"],
+        input[type="submit"],
+        input[type="reset"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<header th:insert="header.html"></header>
+
+<form action="#" th:action="@{/exam}" method="post">
+    <label>
+        Предмет:
+        <select class="form-select" th:field="*{exam.subject}">
+            <option value="">Выберите предмет</option>
+            <option th:each="subject : ${subjects}"
+                    th:value="${subject}"
+                    th:text="${subject}"></option>
+        </select>
+    </label>
+    <p>Балл: <input class="form-control" type="number" th:field="*{exam.score}" min="0" max="100"/></p>
+    <p><input type="submit" value="Отправить" class="btn btn-primary"/> <input type="reset" value="Сбросить" class="btn btn-secondary"/></p>
+</form>
+<footer th:insert="footer.html"></footer>
+</body>
+
+</html>

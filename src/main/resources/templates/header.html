@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Your Beautiful Page</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <style>
+        body {
+            min-height: 75vh; /* Adjust according to your content height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #007bff;
+        }
+
+        .nav-pills .nav-link {
+            color: #ffffff;
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            background-color: #0056b3;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная страница</a></li>
+            <li class="nav-item"><a href="/enrollees" class="nav-link">Абитуриенты</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">Добавить абитуриента</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="/" class="nav-link">About</a></li>
+        </ul>
+    </header>
+</div>
+</body>
+
+</html>
